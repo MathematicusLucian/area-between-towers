@@ -4,8 +4,7 @@ n == height.length
 0 <= height[i] <= 104 */
 
 function maxArea(height: number[]): number {
-    // ^ Shame this does not allow for recursion
-
+    
     let maximumPossibleArea = 0;
  
     // Loop -> Each Tower (Left to Right)
@@ -40,14 +39,16 @@ function maxArea(height: number[]): number {
             The second array was spliced with the index of Building I
             :. The second array has the 'height' array values that occur after Building I
             :. Building J's index in the second array is its distance from Building J
-            Addition of 1 to the value, because computers count from 0 */
-            let current = (lowestTower * (jXAxis + 1));
-
-            /** Determine area. Multiply:
+            Addition of 1 to the value, because computers count from 0 
+            
+            Determine area. Multiply:
                 Y-axis as lower tower
             With:
-                Distance (X-axis):
-            If the result is greater than that between previous tower pairs, updated store maximumPossibleArea value */ 
+                Distance (X-axis): */
+            let current = (lowestTower * (jXAxis + 1));
+
+            /** If the result is greater than that between previous tower pairs,
+             * updated store maximumPossibleArea value */ 
             maximumPossibleArea = Math.max(maximumPossibleArea, current);
 
         });
