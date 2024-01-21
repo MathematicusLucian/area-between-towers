@@ -1,16 +1,7 @@
-/** 
- * CONSTRAINTS
- * 2 <= n <= 105
- * n == height.length
- * 0 <= height[i] <= 104 
- */
-
 export default class Towers {
-    test: any;
 
     constructor() {
         // Stub
-        this.test = 'test';
     }
 
     /**
@@ -20,6 +11,8 @@ export default class Towers {
      * @returns {number} maximum area possible
      */
     maxArea(height: number[]): number {
+
+        this.validateInputs(height);
         
         let maximumPossibleArea: number = 0;
 
@@ -28,6 +21,7 @@ export default class Towers {
          * One could use ``for (let i = 0; i < height.length - 1; i++) {`` 
          * but ``forEach`` is cleaner
          * Could also use ``arr.forEach(function(item, i)`` 
+         * Another option would be to use ``map`` 
          */
         height.forEach((iValue: number, iXAxis: number) => {
             /**
@@ -117,11 +111,38 @@ export default class Towers {
         return cloneBuildingHeights.splice(iXAxis + 1);
     }
 
-}
+    /**
+     * Throws error if out of range
+     */
+    outOfRange(): void {
+        try {
+            throw new RangeError();
+        }
+        catch (e){
+            console.log('Out of range:', e);
+        }
+    }
 
-// let height: number[] = [1,8,6,2,5,4,8,3,7];
-// let n: number = height.length;
-// console.log(maxArea(height));
+    /**
+     * Validates whether the length of the height variable, 
+     * and the values within, are within constraints
+     * 
+     * CONSTRAINTS
+     * 2 <= n <= 105
+     * n == height.length
+     * 0 <= height[i] <= 104 
+     * 
+     * @param {number[]} height a list of tower heights
+     */
+    validateInputs(height: number[]): void {
+        if(height.length < 2 || height.length > 105) this.outOfRange();
+
+        const towerHeightsOutOfRange = height.some((iValue: number) => {
+            return (iValue < 0|| iValue > 104);
+        });
+        if(towerHeightsOutOfRange) this.outOfRange();
+    }
+}
 
 let t = new Towers();
 let height: number[] = [1,22,5,4,8,3,20];

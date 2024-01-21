@@ -9,7 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Towers = /** @class */ (function () {
     function Towers() {
         // Stub
-        this.test = 'test';
     }
     /**
      * Scans a list of heights that represent towers,
@@ -19,12 +18,19 @@ var Towers = /** @class */ (function () {
      */
     Towers.prototype.maxArea = function (height) {
         var _this = this;
+        if (height.length < 2 || height.length > 105)
+            this.outOfRange();
+        var towerHeightsOutOfRange = height.some(function (iValue) {
+            return (iValue < 0 || iValue > 104);
+        });
+        console.log(towerHeightsOutOfRange);
         var maximumPossibleArea = 0;
         // Loop -> Each Tower (Left to Right)
         /**
          * One could use ``for (let i = 0; i < height.length - 1; i++) {``
          * but ``forEach`` is cleaner
          * Could also use ``arr.forEach(function(item, i)``
+         * Another option would be to use ``map``
          */
         height.forEach(function (iValue, iXAxis) {
             /**
@@ -108,6 +114,14 @@ var Towers = /** @class */ (function () {
          */
         return cloneBuildingHeights.splice(iXAxis + 1);
     };
+    Towers.prototype.outOfRange = function () {
+        try {
+            throw new RangeError();
+        }
+        catch (e) {
+            console.log('Out of range:', e);
+        }
+    };
     return Towers;
 }());
 exports.default = Towers;
@@ -115,5 +129,5 @@ exports.default = Towers;
 // let n: number = height.length;
 // console.log(maxArea(height));
 var t = new Towers();
-var height = [1, 22, 5, 4, 8, 3, 20];
+var height = [1, 2002, 5, 4, 8, 3, 20];
 console.log(t.maxArea(height));
