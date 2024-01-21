@@ -2,22 +2,44 @@ import { describe, expect, jest, test } from '@jest/globals';
 import 'isomorphic-fetch';
 import Towers from './towers.ts';
 
-describe("Towers", () => {
-     const towers = new Towers();
-     test("defines maxArea()", () => {
-          expect(typeof towers.maxArea).toBe("function");
+/**
+ * TOWERS: areTowerHeightsOutOfRange
+ */
+describe('Towers module: validateInputs', () => {
+     let towers;
+     
+     beforeEach(() => {
+          jest.resetModules();
+          towers = new Towers();
+     });
+
+     // Positive test scenario
+     test('output should be true', async() => {
+          const height: number[] = [1,22,5,4,8,3,20];
+          expect(await towers.areTowerHeightsOutOfRange(height)).toBe(false);
+     });
+
+     // Positive test scenario
+     test('output should be true', async() => {
+          const height: number[] = [1,2002,5,4,8,3,20];
+          expect(await towers.areTowerHeightsOutOfRange(height)).toBe(true);
      });
 });
 
 /**
  * TOWERS: maxArea
  */
-describe('Towers module', () => {
+
+describe('Towers module: maxArea', () => {
      let towers;
      
      beforeEach(() => {
           jest.resetModules();
           towers = new Towers();
+     });
+     
+     test("defines maxArea()", () => {
+          expect(typeof towers.maxArea).toBe("function");
      });
 
      // Positive test scenario
@@ -49,7 +71,7 @@ describe('Towers module', () => {
  * TOWERS: calculateLargestAreaForIndex
  */
 
-describe('Towers module', () => {
+describe('Towers module: calculateLargestAreaForIndex', () => {
      let towers;
      
      beforeEach(() => {
@@ -89,7 +111,7 @@ describe('Towers module', () => {
  * TOWERS: determineMaxHeightForPairs
  */
 
-describe('Towers module', () => {
+describe('Towers module: determineMaxHeightForPairs', () => {
      const towers = new Towers();
 
      // Positive test scenario
@@ -113,7 +135,7 @@ describe('Towers module', () => {
  * TOWERS: determineBuildingsAhead
  */
 
-describe('Towers module', () => {
+describe('Towers module: determineBuildingsAhead', () => {
      const towers = new Towers();
 
      // Positive test scenario

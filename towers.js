@@ -1,10 +1,4 @@
 "use strict";
-/**
- * CONSTRAINTS
- * 2 <= n <= 105
- * n == height.length
- * 0 <= height[i] <= 104
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 var Towers = /** @class */ (function () {
     function Towers() {
@@ -18,12 +12,7 @@ var Towers = /** @class */ (function () {
      */
     Towers.prototype.maxArea = function (height) {
         var _this = this;
-        if (height.length < 2 || height.length > 105)
-            this.outOfRange();
-        var towerHeightsOutOfRange = height.some(function (iValue) {
-            return (iValue < 0 || iValue > 104);
-        });
-        console.log(towerHeightsOutOfRange);
+        this.validateInputs(height);
         var maximumPossibleArea = 0;
         // Loop -> Each Tower (Left to Right)
         /**
@@ -114,6 +103,9 @@ var Towers = /** @class */ (function () {
          */
         return cloneBuildingHeights.splice(iXAxis + 1);
     };
+    /**
+     * Throws error if out of range
+     */
     Towers.prototype.outOfRange = function () {
         try {
             throw new RangeError();
@@ -122,12 +114,39 @@ var Towers = /** @class */ (function () {
             console.log('Out of range:', e);
         }
     };
+    /**
+     * Validates whether the length of the height variable,
+     * and the values within, are within constraints
+     *
+     * CONSTRAINTS
+     * 2 <= n <= 105
+     * n == height.length
+     * 0 <= height[i] <= 104
+     *
+     * @param {number[]} height a list of tower heights
+     */
+    Towers.prototype.validateInputs = function (height) {
+        if (height.length < 2 || height.length > 105)
+            this.outOfRange();
+        if (this.areTowerHeightsOutOfRange(height))
+            this.outOfRange();
+    };
+    /**
+     * Validates whether the values within, are within constraints
+     *
+     * CONSTRAINTS
+     * 0 <= height[i] <= 104
+     *
+     * @param {number[]} height a list of tower heights
+     */
+    Towers.prototype.areTowerHeightsOutOfRange = function (height) {
+        return height.some(function (iValue) {
+            return (iValue < 0 || iValue > 104);
+        });
+    };
     return Towers;
 }());
 exports.default = Towers;
-// let height: number[] = [1,8,6,2,5,4,8,3,7];
-// let n: number = height.length;
-// console.log(maxArea(height));
 var t = new Towers();
-var height = [1, 2002, 5, 4, 8, 3, 20];
+var height = [1, 22, 5, 4, 8, 3, 20];
 console.log(t.maxArea(height));

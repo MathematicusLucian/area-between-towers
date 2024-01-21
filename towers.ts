@@ -137,10 +137,21 @@ export default class Towers {
     validateInputs(height: number[]): void {
         if(height.length < 2 || height.length > 105) this.outOfRange();
 
-        const towerHeightsOutOfRange = height.some((iValue: number) => {
+        if(this.areTowerHeightsOutOfRange(height)) this.outOfRange();
+    }
+
+    /**
+     * Validates whether the values within, are within constraints
+     * 
+     * CONSTRAINTS
+     * 0 <= height[i] <= 104 
+     * 
+     * @param {number[]} height a list of tower heights
+     */
+    areTowerHeightsOutOfRange(height: number[]): boolean {
+        return height.some((iValue: number) => {
             return (iValue < 0|| iValue > 104);
         });
-        if(towerHeightsOutOfRange) this.outOfRange();
     }
 }
 
