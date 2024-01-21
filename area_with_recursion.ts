@@ -1,5 +1,3 @@
-// tsc area_between_towers.ts && node area_between_towers.js
-
 /** CONSTRAINTS
 2 <= n <= 105
 n == height.length
