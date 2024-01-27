@@ -9,9 +9,9 @@ The solution demonstrates :-
 - Asynchronous programming.
 - Use of Jest for unit testing, including ``describe`` sections, etc.. Was tempted to add some mocks, to show my experience, but again, I think that is ot of scope of this exercise.
 
- **Table of content:**
- - [The Approach](#approach)
+ **Table of content:** 
  - [Exercise](#exercise)
+ - [The Approach](#approach)
  - [Solution Implementation #1](#solution-one)
  - [Solution Implementation #2](#solution-two)
  - [Run App](#run)
