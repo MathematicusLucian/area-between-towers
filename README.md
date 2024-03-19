@@ -1,5 +1,7 @@
 # Calculating the Maximum Possible Area Between Towers
 
+Tech challenge: Where an array of tower heights, use TypeScript to calculate the pair of consecutive towers between which there is the greatest area.
+
 The solution demonstrates :-
 - Awareness of the need to keep functions small, and focused. (Single Responsibility Principle of SOLID.)
 - A Class has been built to show awareness of OOP (Object-Oriented Programming.) Was tempted to throw in some Functional Programming, but I fear I have already gone way beyond what you were looking for.
